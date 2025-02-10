@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Photography Portfolio | Tomas Hein</title>
     <meta name="description" content="Discover the photography portfolio of Tomas Hein, a professional photographer based in Barcelona. Explore stunning images captured with artistic precision.">
     <meta name="keywords" content="photography, portfolio, Tomas Hein, photographer, Barcelona, art, professional photography">
@@ -16,11 +16,14 @@
     <meta name="twitter:description" content="Explore the photography portfolio of Tomas Hein, showcasing artistic and professional shots.">
     <meta name="twitter:image" content="images/thumbnails/photo1.jpg">
     <style>
-        body {
+        html, body {
             margin: 0;
-            background-color: #fff;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
             overflow: hidden;
             position: relative;
+            touch-action: none;
         }
         .photo {
             position: absolute;
