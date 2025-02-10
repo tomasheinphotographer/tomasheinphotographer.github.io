@@ -68,7 +68,7 @@
 </head>
 <body>
     <div class="marquee-container">
-        <div class="marquee">Tomas Hein - Photographer based in Barcelona - tomas@tomashein.com - </div>
+        <div class="marquee">Tomas Hein - Photographer based in Barcelona - tomas@tomashein.com - Tomas Hein - Photographer based in Barcelona - tomas@tomashein.com - Tomas Hein - Photographer based in Barcelona - tomas@tomashein.com</div>
     </div>
     <div class="contact">
         <a href="mailto:tomas@tomashein.com">Say Hello</a>
@@ -100,7 +100,7 @@
                 offsetX = clientX - img.offsetLeft;
                 offsetY = clientY - img.offsetTop;
                 img.style.cursor = "grabbing";
-                img.style.zIndex = images.length;
+                img.style.zIndex = Math.max(...[...document.querySelectorAll('.photo')].map(el => parseInt(el.style.zIndex) || 0)) + 1;
                 e.preventDefault();
             }
 
