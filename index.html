@@ -94,11 +94,11 @@
 <body>
     <script>
         const allImages = [];
-        for (let i = 1; i <= 30; i++) {
+        for (let i = 1; i <= 27; i++) {
             allImages.push(`images/thumbnails/photo${i}.jpg`);
         }
         
-        const selectedImages = allImages.sort(() => Math.random() - 0.5).slice(0, 15);
+        const selectedImages = allImages.sort(() => Math.random() - 0.5).slice(0, 16);
         
         selectedImages.forEach((src, index) => {
             const img = document.createElement("img");
