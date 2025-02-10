@@ -56,12 +56,15 @@
     <script>
         const images = [];
         for (let i = 1; i <= 20; i++) {
-            images.push(`images/photo${i}.jpg`);
+            images.push({
+                thumb: `images/thumbnails/photo${i}.jpg`,
+                full: `images/fullsize/photo${i}.jpg`
+            });
         }
 
-        images.forEach((src, index) => {
+        images.forEach((imgData, index) => {
             const img = document.createElement("img");
-            img.src = src;
+            img.src = imgData.thumb;
             img.classList.add("photo");
             img.style.width = `${200 + Math.random() * 200}px`;
             img.style.top = `${Math.random() * 80}vh`;
@@ -93,8 +96,14 @@
                 if (!isDragging) {
                     if (img.classList.contains("expanded")) {
                         img.classList.remove("expanded");
+                        img.src = imgData.thumb;
                     } else {
-                        document.querySelectorAll(".expanded").forEach(el => el.classList.remove("expanded"));
+                        document.querySelectorAll(".expanded").forEach(el => {
+                            el.classList.remove("expanded");
+                            el.src = el.dataset.thumb;
+                        });
+                        img.dataset.thumb = img.src;
+                        img.src = imgData.full;
                         img.classList.add("expanded");
                     }
                 }
