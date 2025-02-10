@@ -93,28 +93,34 @@
 
             let isDragging = false, offsetX, offsetY;
             
-            img.addEventListener("touchstart", (e) => {
+            function startDrag(e) {
                 isDragging = true;
-                const touch = e.touches[0];
-                offsetX = touch.clientX - img.offsetLeft;
-                offsetY = touch.clientY - img.offsetTop;
-                img.style.zIndex = images.length; // Bring to foreground on touch
+                offsetX = (e.clientX || e.touches[0].clientX) - img.offsetLeft;
+                offsetY = (e.clientY || e.touches[0].clientY) - img.offsetTop;
                 img.style.cursor = "grabbing";
                 e.preventDefault();
-            });
+            }
 
-            img.addEventListener("touchmove", (e) => {
+            function dragMove(e) {
                 if (isDragging) {
-                    const touch = e.touches[0];
-                    img.style.left = `${touch.clientX - offsetX}px`;
-                    img.style.top = `${touch.clientY - offsetY}px`;
+                    img.style.left = `${(e.clientX || e.touches[0].clientX) - offsetX}px`;
+                    img.style.top = `${(e.clientY || e.touches[0].clientY) - offsetY}px`;
                 }
-            });
+            }
 
-            img.addEventListener("touchend", () => {
+            function endDrag() {
                 isDragging = false;
                 img.style.cursor = "grab";
-            });
+            }
+
+            img.addEventListener("mousedown", startDrag);
+            img.addEventListener("mousemove", dragMove);
+            img.addEventListener("mouseup", endDrag);
+            img.addEventListener("mouseleave", endDrag);
+
+            img.addEventListener("touchstart", startDrag);
+            img.addEventListener("touchmove", dragMove);
+            img.addEventListener("touchend", endDrag);
         });
     </script>
 </body>
