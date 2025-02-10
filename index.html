@@ -15,6 +15,8 @@
             position: absolute;
             cursor: grab;
             transition: transform 0.3s ease-in-out;
+            user-drag: none;
+            -webkit-user-drag: none;
         }
         .expanded {
             position: fixed;
@@ -78,6 +80,7 @@
                 offsetX = e.clientX - img.offsetLeft;
                 offsetY = e.clientY - img.offsetTop;
                 img.style.cursor = "grabbing";
+                e.preventDefault();
             });
 
             document.addEventListener("mousemove", (e) => {

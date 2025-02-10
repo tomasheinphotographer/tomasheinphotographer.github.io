@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+        .photo {
+            position: absolute;
+            cursor: grab;
+            transition: transform 0.3s ease-in-out;
+            user-drag: none;
+            -webkit-user-drag: none;
+        }
+        .expanded {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            width: calc(100vw - 60px);
+            height: calc(100vh - 60px);
+            object-fit: contain;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        .marquee-container {
+            position: fixed;
+            top: 25%;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee {
+            display: inline-block;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #39ff14;
+            animation: scroll 10s linear infinite;
+        }
+        @keyframes scroll {
+            from { transform: translateX(100vw); }
+            to { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="marquee-container">
+        <div class="marquee">Tomas Hein - Photographer based in Barcelona - tomas@tomashein.com - </div>
+    </div>
+    <script>
+        const images = [];
+        for (let i = 1; i <= 20; i++) {
+            images.push({
+                thumb: `images/thumbnails/photo${i}.jpg`,
+                full: `images/fullsize/photo${i}.jpg`
+            });
+        }
+
+        images.forEach((imgData, index) => {
+            const img = document.createElement("img");
+            img.src = imgData.thumb;
+            img.classList.add("photo");
+            img.style.width = `${200 + Math.random() * 200}px`;
+            img.style.top = `${Math.random() * 80}vh`;
+            img.style.left = `${Math.random() * 80}vw`;
+            document.body.appendChild(img);
+
+            let isDragging = false, offsetX, offsetY;
+            
+            img.addEventListener("mousedown", (e) => {
+                isDragging = true;
+                offsetX = e.clientX - img.offsetLeft;
+                offsetY = e.clientY - img.offsetTop;
+                img.style.cursor = "grabbing";
+                e.preventDefault();
+            });
+
+            document.addEventListener("mousemove", (e) => {
+                if (isDragging) {
+                    img.style.left = `${e.clientX - offsetX}px`;
+                    img.style.top = `${e.clientY - offsetY}px`;
+                }
+            });
+
+            document.addEventListener("mouseup", () => {
+                isDragging = false;
+                img.style.cursor = "grab";
+            });
+
+            img.addEventListener("click", (e) => {
+                if (!isDragging) {
+                    if (img.classList.contains("expanded")) {
+                        img.classList.remove("expanded");
+                        img.src = imgData.thumb;
+                    } else {
+                        document.querySelectorAll(".expanded").forEach(el => {
+                            el.classList.remove("expanded");
+                            el.src = el.dataset.thumb;
+                        });
+                        img.dataset.thumb = img.src;
+                        img.src = imgData.full;
+                        img.classList.add("expanded");
+                    }
+                }
+                e.stopPropagation();
+            });
+        });
+    </script>
+</body>
+</html>
