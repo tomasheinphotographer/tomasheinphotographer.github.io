@@ -45,7 +45,7 @@
             font-weight: bold;
             text-transform: uppercase;
             color: #39ff14;
-            animation: scroll 20s linear infinite;
+            animation: scroll 25s linear infinite;
         }
         @keyframes scroll {
             from { transform: translateX(100vw); }
@@ -53,11 +53,12 @@
         }
         .contact {
             position: fixed;
-            top: 10px;
-            right: 20px;
+            top: 5%;
+            right: 5%;
             font-size: 18px;
             font-family: Arial, sans-serif;
             font-weight: bold;
+            z-index: 3000;
         }
         .contact a {
             text-decoration: none;
@@ -97,11 +98,12 @@
                 const touch = e.touches[0];
                 offsetX = touch.clientX - img.offsetLeft;
                 offsetY = touch.clientY - img.offsetTop;
+                img.style.zIndex = images.length; // Bring to foreground on touch
                 img.style.cursor = "grabbing";
                 e.preventDefault();
             });
 
-            document.addEventListener("touchmove", (e) => {
+            img.addEventListener("touchmove", (e) => {
                 if (isDragging) {
                     const touch = e.touches[0];
                     img.style.left = `${touch.clientX - offsetX}px`;
@@ -109,7 +111,7 @@
                 }
             });
 
-            document.addEventListener("touchend", () => {
+            img.addEventListener("touchend", () => {
                 isDragging = false;
                 img.style.cursor = "grab";
             });
