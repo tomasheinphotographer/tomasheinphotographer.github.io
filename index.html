@@ -94,11 +94,11 @@
 <body>
     <script>
         const allImages = [];
-        for (let i = 1; i <= 27; i++) {
+        for (let i = 1; i <= 20; i++) {
             allImages.push(`images/thumbnails/photo${i}.jpg`);
         }
         
-        const selectedImages = allImages.sort(() => Math.random() - 0.5).slice(0, 16);
+        const selectedImages = allImages.sort(() => Math.random() - 0.5).slice(0, 15);
         
         selectedImages.forEach((src, index) => {
             const img = document.createElement("img");
@@ -109,36 +109,25 @@
             img.style.left = `${Math.random() * 80}vw`;
             img.style.zIndex = index;
             document.body.appendChild(img);
-
-            let isDragging = false, offsetX, offsetY;
+        });
+        
+        let lastShakeTime = 0;
+        window.addEventListener("devicemotion", (event) => {
+            const acceleration = event.accelerationIncludingGravity;
+            const shakeThreshold = 15;
+            const currentTime = new Date().getTime();
             
-            function startDrag(e) {
-                isDragging = true;
-                const clientX = e.clientX || e.touches[0].clientX;
-                const clientY = e.clientY || e.touches[0].clientY;
-                offsetX = clientX - img.offsetLeft;
-                offsetY = clientY - img.offsetTop;
-                img.style.cursor = "grabbing";
-                img.style.zIndex = Math.max(...[...document.querySelectorAll('.photo')].map(el => parseInt(el.style.zIndex) || 0)) + 1;
-                e.preventDefault();
+            if (currentTime - lastShakeTime > 1000) {
+                if (Math.abs(acceleration.x) > shakeThreshold ||
+                    Math.abs(acceleration.y) > shakeThreshold ||
+                    Math.abs(acceleration.z) > shakeThreshold) {
+                        document.querySelectorAll(".photo").forEach((img) => {
+                            img.style.top = `${Math.random() * 80}vh`;
+                            img.style.left = `${Math.random() * 80}vw`;
+                        });
+                        lastShakeTime = currentTime;
+                }
             }
-
-            function dragMove(e) {
-                if (!isDragging) return;
-                const clientX = e.clientX || e.touches[0].clientX;
-                const clientY = e.clientY || e.touches[0].clientY;
-                img.style.left = `${clientX - offsetX}px`;
-                img.style.top = `${clientY - offsetY}px`;
-            }
-
-            function endDrag() {
-                isDragging = false;
-                img.style.cursor = "grab";
-            }
-
-            img.addEventListener("pointerdown", startDrag);
-            document.addEventListener("pointermove", dragMove);
-            document.addEventListener("pointerup", endDrag);
         });
     </script>
     <div class="marquee-container">
@@ -147,7 +136,7 @@
     <div class="contact">
         <a href="mailto:tomas@tomashein.com">Say Hello</a>
     </div>
-    <div class="drag-instruction">touch photos to move</div>
+    <div class="drag-instruction">Touch to drag images</div>
     <div class="instagram">
         <a href="https://www.instagram.com/tomas__hein" target="_blank">@tomas__hein</a>
     </div>
