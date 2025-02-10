@@ -79,7 +79,7 @@
             images.push(`images/thumbnails/photo${i}.jpg`);
         }
 
-        images.sort(() => Math.random() - 0.5);
+        images.sort(() => Math.random() - 0.5); // Shuffle image order for layering
         
         images.forEach((src, index) => {
             const img = document.createElement("img");
@@ -88,28 +88,24 @@
             img.style.width = `${200 + Math.random() * 200}px`;
             img.style.top = `${Math.random() * 80}vh`;
             img.style.left = `${Math.random() * 80}vw`;
-            img.style.zIndex = index;
+            img.style.zIndex = index; // Assign random z-index for layering
             document.body.appendChild(img);
 
             let isDragging = false, offsetX, offsetY;
             
             function startDrag(e) {
                 isDragging = true;
-                const clientX = e.clientX || e.touches[0].clientX;
-                const clientY = e.clientY || e.touches[0].clientY;
-                offsetX = clientX - img.offsetLeft;
-                offsetY = clientY - img.offsetTop;
+                offsetX = (e.clientX || e.touches[0].clientX) - img.offsetLeft;
+                offsetY = (e.clientY || e.touches[0].clientY) - img.offsetTop;
                 img.style.cursor = "grabbing";
-                img.style.zIndex = images.length;
                 e.preventDefault();
             }
 
             function dragMove(e) {
-                if (!isDragging) return;
-                const clientX = e.clientX || e.touches[0].clientX;
-                const clientY = e.clientY || e.touches[0].clientY;
-                img.style.left = `${clientX - offsetX}px`;
-                img.style.top = `${clientY - offsetY}px`;
+                if (isDragging) {
+                    img.style.left = `${(e.clientX || e.touches[0].clientX) - offsetX}px`;
+                    img.style.top = `${(e.clientY || e.touches[0].clientY) - offsetY}px`;
+                }
             }
 
             function endDrag() {
@@ -117,9 +113,14 @@
                 img.style.cursor = "grab";
             }
 
-            img.addEventListener("pointerdown", startDrag);
-            document.addEventListener("pointermove", dragMove);
-            document.addEventListener("pointerup", endDrag);
+            img.addEventListener("mousedown", startDrag);
+            img.addEventListener("mousemove", dragMove);
+            img.addEventListener("mouseup", endDrag);
+            img.addEventListener("mouseleave", endDrag);
+
+            img.addEventListener("touchstart", startDrag);
+            img.addEventListener("touchmove", dragMove);
+            img.addEventListener("touchend", endDrag);
         });
     </script>
 </body>
