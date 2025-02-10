@@ -18,16 +18,6 @@
             user-drag: none;
             -webkit-user-drag: none;
         }
-        .expanded {
-            position: fixed;
-            top: 30px;
-            left: 30px;
-            width: calc(100vw - 60px);
-            height: calc(100vh - 60px);
-            object-fit: contain;
-            z-index: 1000;
-            cursor: pointer;
-        }
         .marquee-container {
             position: fixed;
             top: 25%;
@@ -35,6 +25,7 @@
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
+            z-index: 1000;
         }
         .marquee {
             display: inline-block;
@@ -58,15 +49,12 @@
     <script>
         const images = [];
         for (let i = 1; i <= 20; i++) {
-            images.push({
-                thumb: `images/thumbnails/photo${i}.jpg`,
-                full: `images/fullsize/photo${i}.jpg`
-            });
+            images.push(`images/thumbnails/photo${i}.jpg`);
         }
 
-        images.forEach((imgData, index) => {
+        images.forEach((src, index) => {
             const img = document.createElement("img");
-            img.src = imgData.thumb;
+            img.src = src;
             img.classList.add("photo");
             img.style.width = `${200 + Math.random() * 200}px`;
             img.style.top = `${Math.random() * 80}vh`;
@@ -93,24 +81,6 @@
             document.addEventListener("mouseup", () => {
                 isDragging = false;
                 img.style.cursor = "grab";
-            });
-
-            img.addEventListener("click", (e) => {
-                if (!isDragging) {
-                    if (img.classList.contains("expanded")) {
-                        img.classList.remove("expanded");
-                        img.src = imgData.thumb;
-                    } else {
-                        document.querySelectorAll(".expanded").forEach(el => {
-                            el.classList.remove("expanded");
-                            el.src = el.dataset.thumb;
-                        });
-                        img.dataset.thumb = img.src;
-                        img.src = imgData.full;
-                        img.classList.add("expanded");
-                    }
-                }
-                e.stopPropagation();
             });
         });
     </script>
