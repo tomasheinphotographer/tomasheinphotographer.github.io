@@ -67,18 +67,40 @@
             text-decoration: none;
             color: #000;
         }
+        .drag-instruction {
+            position: fixed;
+            top: 5%;
+            left: 5%;
+            font-size: 9px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            z-index: 3000;
+        }
+        .instagram {
+            position: fixed;
+            bottom: 5%;
+            right: 5%;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            z-index: 3000;
+        }
+        .instagram a {
+            text-decoration: none;
+            color: #000;
+        }
     </style>
 </head>
 <body>
     <script>
-        const images = [];
-        for (let i = 1; i <= 20; i++) {
-            images.push(`images/thumbnails/photo${i}.jpg`);
+        const allImages = [];
+        for (let i = 1; i <= 50; i++) {
+            allImages.push(`images/thumbnails/photo${i}.jpg`);
         }
-
-        images.sort(() => Math.random() - 0.5);
         
-        images.forEach((src, index) => {
+        const selectedImages = allImages.sort(() => Math.random() - 0.5).slice(0, 20);
+        
+        selectedImages.forEach((src, index) => {
             const img = document.createElement("img");
             img.src = src;
             img.classList.add("photo");
@@ -120,10 +142,14 @@
         });
     </script>
     <div class="marquee-container">
-        <div class="marquee">Tomas Hein is a photographer currently based in Barcelona.  He likes to publish photography books on topics that interest him such as drag racing in Sweden or death rituals in contemporary Inca culture. He shoots commercial work for clients like L'Oreal Paris, Monies, Lacoste, Zalando, High Snobiety, British GQ, Thameen London.  Tomas is also an unqualified industrial designer, and designs and manufactures equipment that solves photographer's problems under the label Gelatin Digital.</div>
+        <div class="marquee">Tomas Hein is a photographer currently based in Barcelona...</div>
     </div>
     <div class="contact">
         <a href="mailto:tomas@tomashein.com">Say Hello</a>
+    </div>
+    <div class="drag-instruction">Touch to drag images</div>
+    <div class="instagram">
+        <a href="https://www.instagram.com/tomas__hein" target="_blank">@tomas__hein</a>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
