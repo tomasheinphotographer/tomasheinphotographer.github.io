@@ -38,8 +38,6 @@
     .photo {
       position: absolute;
       cursor: grab;
-      /* Note: The transition is set for transform, but left/top are updated.
-         Adjust if needed. */
       transition: transform 0.3s ease-in-out;
       user-drag: none;
       -webkit-user-drag: none;
@@ -101,7 +99,6 @@
       text-decoration: none;
       color: #000;
     }
-    /* New styling for the Gelatin link */
     .gelatin {
       position: fixed;
       bottom: 5%;
@@ -120,7 +117,7 @@
 <body>
   <div class="marquee-container" aria-hidden="true">
     <div class="marquee">
-     I'm a photographer based in Barcelona.  I publish photography books on topics that interest me such as drag racing in Sweden or death rituals in contemporary Inca culture. I also shoot commercial work for clients like L'Oreal Paris, Monies, Lacoste, Zalando, High Snobiety, British GQ, Thameen London.  I've recently become an unqualified industrial designer under the label Gelatin, working to solve on-set problems with better equipment design.
+    I'm a photographer based in Barcelona.  I publish photography books on topics that interest me such as drag racing in Sweden or death rituals in contemporary Inca culture. I also shoot commercial work for clients like L'Oreal Paris, Monies, Lacoste, Zalando, High Snobiety, British GQ, Thameen London.  I've recently become an unqualified industrial designer under the label Gelatin, working to solve on-set problems with better equipment design.
     </div>
   </div>
 
@@ -134,7 +131,6 @@
     <a href="https://www.instagram.com/tomas__hein" target="_blank" rel="noopener noreferrer">@tomas__hein</a>
   </div>
 
-  <!-- New Gelatin link on the bottom left -->
   <div class="gelatin">
     <a href="https://www.gelatindigital.com" target="_blank" rel="noopener noreferrer">Gelatin</a>
   </div>
@@ -148,54 +144,53 @@
         document.documentElement.style.setProperty("--marquee-speed", "50s");
       }
 
-      // Detect if the device is mobile
+      // Determine if device is mobile and set image count accordingly
       const isMobile = window.innerWidth < 768;
-      // Load fewer images on mobile for performance
-      const numImages = isMobile ? 8 : 16;
+      const numImages = isMobile ? 11 : 16;
 
       let currentDrag = null;
       let dragOffsetX = 0;
       let dragOffsetY = 0;
 
-      // Build an array of image paths
+      // Build an array of image paths.
       const allImages = [];
       for (let i = 1; i <= 27; i++) {
         allImages.push(`images/thumbnails/photo${i}.jpg`);
       }
 
-      // Randomize and select the appropriate number of images
+      // Randomize and select the desired number of images.
       const selectedImages = allImages.sort(() => Math.random() - 0.5).slice(0, numImages);
 
       selectedImages.forEach((src, index) => {
-        // Preload image using the Image object
         const img = new Image();
         img.src = src;
         img.alt = `Photo ${index + 1}`;
         img.classList.add("photo");
         img.setAttribute("draggable", "false");
-        
-        // Use a smaller width range on mobile for faster loading
-        if (isMobile) {
-          img.style.width = `${150 + Math.random() * 150}px`;
-        } else {
-          img.style.width = `${200 + Math.random() * 200}px`;
-        }
-        img.style.top = `${Math.random() * 80}vh`;
-        img.style.left = `${Math.random() * 80}vw`;
+
+        // Determine image width: smaller on mobile for faster loading.
+        const imgWidth = isMobile ? (150 + Math.random() * 150) : (200 + Math.random() * 200);
+        img.style.width = `${imgWidth}px`;
+
+        // Calculate maximum positions to keep the image fully visible.
+        const maxLeft = window.innerWidth - imgWidth;
+        const maxTop = window.innerHeight - imgWidth; // Assuming roughly square images
+
+        img.style.left = `${Math.random() * maxLeft}px`;
+        img.style.top = `${Math.random() * maxTop}px`;
         img.style.zIndex = index;
 
-        // Append the image to the DOM only after it has loaded
+        // Append the image to the DOM once it has loaded.
         img.onload = () => {
           document.body.appendChild(img);
         };
 
-        // Set up dragging events for the image
+        // Set up dragging events for the image.
         img.addEventListener("pointerdown", (e) => {
           currentDrag = img;
           dragOffsetX = e.clientX - img.offsetLeft;
           dragOffsetY = e.clientY - img.offsetTop;
           img.style.cursor = "grabbing";
-          // Bring the dragged image to the front
           const allPhotos = Array.from(document.querySelectorAll('.photo'));
           const maxZ = Math.max(...allPhotos.map(el => parseInt(el.style.zIndex) || 0));
           img.style.zIndex = maxZ + 1;
@@ -203,14 +198,14 @@
         });
       });
 
-      // Global pointermove handler for dragging images
+      // Global pointermove handler for dragging images.
       document.addEventListener("pointermove", (e) => {
         if (!currentDrag) return;
         currentDrag.style.left = `${e.clientX - dragOffsetX}px`;
         currentDrag.style.top = `${e.clientY - dragOffsetY}px`;
       });
 
-      // End dragging when pointer is released or canceled
+      // End dragging when pointer is released or canceled.
       const endDrag = () => {
         if (currentDrag) {
           currentDrag.style.cursor = "grab";
