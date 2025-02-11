@@ -1,189 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photography Portfolio | Tomas Hein</title>
-    <meta name="description" content="I'm a photographer currently based in Barcelona. I like to publish photography books on topics that interest me such as drag racing in Sweden or death rituals in contemporary Inca culture. I also shoot commercial work for clients like L'Oreal Paris, Monies, Lacoste, Zalando, High Snobiety, British GQ, Thameen London. Recently I also became an unqualified industrial designer, working to solve problems on set with better equipment design, under the label Gelatin Digital.">
-    <meta name="keywords" content="photography, portfolio, Tomas Hein, photographer, Barcelona, art, professional photography">
-    <meta name="author" content="Tomas Hein">
-    <meta property="og:title" content="Photography Portfolio | Tomas Hein">
-    <meta property="og:description" content="Explore the work of Tomas Hein, a professional photographer based in Barcelona.">
-    <meta property="og:image" content="images/thumbnails/photo1.jpg">
-    <meta property="og:url" content="https://www.tomashein.com">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Photography Portfolio | Tomas Hein">
-    <meta name="twitter:description" content="Explore the photography portfolio of Tomas Hein.">
-    <meta name="twitter:image" content="images/thumbnails/photo1.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photography Portfolio | Tomas Hein</title>
+  <meta name="description" content="I'm a photographer currently based in Barcelona. I like to publish photography books on topics that interest me such as drag racing in Sweden or death rituals in contemporary Inca culture. I also shoot commercial work for clients like L'Oreal Paris, Monies, Lacoste, Zalando, High Snobiety, British GQ, Thameen London. Recently I also became an unqualified industrial designer, working to solve problems on set with better equipment design, under the label Gelatin Digital.">
+  <meta name="keywords" content="photography, portfolio, Tomas Hein, photographer, Barcelona, art, professional photography">
+  <meta name="author" content="Tomas Hein">
+  <meta property="og:title" content="Photography Portfolio | Tomas Hein">
+  <meta property="og:description" content="Explore the work of Tomas Hein, a professional photographer based in Barcelona.">
+  <meta property="og:image" content="images/thumbnails/photo1.jpg">
+  <meta property="og:url" content="https://www.tomashein.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Photography Portfolio | Tomas Hein">
+  <meta name="twitter:description" content="Explore the photography portfolio of Tomas Hein.">
+  <meta name="twitter:image" content="images/thumbnails/photo1.jpg">
 
-    <!-- Google Analytics Tracking Code (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'YOUR_TRACKING_ID');
-    </script>
+  <!-- Google Analytics (GA4) -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-77Y60ETCBT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-77Y60ETCBT');
+  </script>
 
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
-        .photo {
-            position: absolute;
-            cursor: grab;
-            transition: transform 0.3s ease-in-out;
-            user-drag: none;
-            -webkit-user-drag: none;
-        }
-        .marquee-container {
-            position: fixed;
-            top: 75%;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            z-index: 2000;
-        }
-        .marquee {
-            display: inline-block;
-            font-size: 24px;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #39ff14;
-            animation: scroll var(--marquee-speed, 50s) linear infinite;
-        }
-        @keyframes scroll {
-            from { transform: translateX(100vw); }
-            to { transform: translateX(-100%); }
-        }
-        .contact {
-            position: fixed;
-            top: 5%;
-            right: 5%;
-            font-size: 18px;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            z-index: 3000;
-        }
-        .contact a {
-            text-decoration: none;
-            color: #000;
-        }
-        .drag-instruction {
-            position: fixed;
-            top: 5%;
-            left: 5%;
-            font-size: 9px;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            z-index: 3000;
-        }
-        .instagram {
-            position: fixed;
-            bottom: 5%;
-            right: 5%;
-            font-size: 18px;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            z-index: 3000;
-        }
-        .instagram a {
-            text-decoration: none;
-            color: #000;
-        }
-    </style>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    .photo {
+      position: absolute;
+      cursor: grab;
+      /* Note: The transition is set for transform, but left/top are updated.
+         Adjust if needed. */
+      transition: transform 0.3s ease-in-out;
+      user-drag: none;
+      -webkit-user-drag: none;
+    }
+    .marquee-container {
+      position: fixed;
+      top: 75%;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      z-index: 2000;
+    }
+    .marquee {
+      display: inline-block;
+      font-size: 24px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #39ff14;
+      animation: scroll var(--marquee-speed, 50s) linear infinite;
+    }
+    @keyframes scroll {
+      from { transform: translateX(100vw); }
+      to { transform: translateX(-100%); }
+    }
+    .contact {
+      position: fixed;
+      top: 5%;
+      right: 5%;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      z-index: 3000;
+    }
+    .contact a {
+      text-decoration: none;
+      color: #000;
+    }
+    .drag-instruction {
+      position: fixed;
+      top: 5%;
+      left: 5%;
+      font-size: 9px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      z-index: 3000;
+    }
+    .instagram {
+      position: fixed;
+      bottom: 5%;
+      right: 5%;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      z-index: 3000;
+    }
+    .instagram a {
+      text-decoration: none;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
-    <!-- Marquee (marked as aria-hidden since it’s decorative) -->
   <div class="marquee-container" aria-hidden="true">
     <div class="marquee">
-      I'm a photographer based in Barcelona.  I publish photography books on topics that interest me such as drag racing in Sweden or death rituals in contemporary Inca culture. I also shoot commercial work for clients like L'Oreal Paris, Monies, Lacoste, Zalando, High Snobiety, British GQ, Thameen London.  I've recently become an unqualified industrial designer under the label Gelatin, working to solve on-set problems with better equipment design.
+   I'm a photographer based in Barcelona.  I publish photography books on topics that interest me such as drag racing in Sweden or death rituals in contemporary Inca culture. I also shoot commercial work for clients like L'Oreal Paris, Monies, Lacoste, Zalando, High Snobiety, British GQ, Thameen London.  I've recently become an unqualified industrial designer under the label Gelatin, working to solve on-set problems with better equipment design.
     </div>
   </div>
-  
+
   <div class="contact">
     <a href="mailto:tomas@tomashein.com">Say Hello</a>
   </div>
-  
+
   <div class="drag-instruction">touch photos to move</div>
-  
+
   <div class="instagram">
     <a href="https://www.instagram.com/tomas__hein" target="_blank" rel="noopener noreferrer">@tomas__hein</a>
   </div>
 
   <script>
-    // Global variables for the current dragged element and its offset
-    let currentDrag = null;
-    let dragOffsetX = 0;
-    let dragOffsetY = 0;
-
-    // Build an array of image paths
-    const allImages = [];
-    for (let i = 1; i <= 27; i++) {
-      allImages.push(`images/thumbnails/photo${i}.jpg`);
-    }
-
-    // Randomize the array and select 16 images
-    const selectedImages = allImages.sort(() => Math.random() - 0.5).slice(0, 16);
-
-    // Create and add image elements to the DOM
-    selectedImages.forEach((src, index) => {
-      const img = document.createElement("img");
-      img.src = src;
-      img.alt = `Photo ${index + 1}`; // Added for accessibility
-      img.classList.add("photo");
-      img.setAttribute("draggable", "false"); // Prevent the default drag image behavior
-      img.style.width = `${200 + Math.random() * 200}px`;
-      img.style.top = `${Math.random() * 80}vh`;
-      img.style.left = `${Math.random() * 80}vw`;
-      img.style.zIndex = index;
-      document.body.appendChild(img);
-
-      // Start dragging on pointerdown
-      img.addEventListener("pointerdown", (e) => {
-        currentDrag = img;
-        dragOffsetX = e.clientX - img.offsetLeft;
-        dragOffsetY = e.clientY - img.offsetTop;
-        img.style.cursor = "grabbing";
-        // Raise the dragged image above others
-        const allPhotos = Array.from(document.querySelectorAll('.photo'));
-        const maxZ = Math.max(...allPhotos.map(el => parseInt(el.style.zIndex) || 0));
-        img.style.zIndex = maxZ + 1;
-        e.preventDefault();
-      });
-    });
-
-    // Global pointermove handler for dragging
-    document.addEventListener("pointermove", (e) => {
-      if (!currentDrag) return;
-      currentDrag.style.left = `${e.clientX - dragOffsetX}px`;
-      currentDrag.style.top = `${e.clientY - dragOffsetY}px`;
-    });
-
-    // End dragging on pointerup or pointercancel
-    const endDrag = () => {
-      if (currentDrag) {
-        currentDrag.style.cursor = "grab";
-        currentDrag = null;
-      }
-    };
-    document.addEventListener("pointerup", endDrag);
-    document.addEventListener("pointercancel", endDrag);
-
-    // Adjust the marquee speed based on viewport width
     document.addEventListener("DOMContentLoaded", () => {
+      // Adjust marquee speed based on viewport width
       if (window.innerWidth < 768) {
         document.documentElement.style.setProperty("--marquee-speed", "60s");
       } else {
         document.documentElement.style.setProperty("--marquee-speed", "50s");
       }
+
+      // Detect if the device is mobile
+      const isMobile = window.innerWidth < 768;
+      // Load fewer images on mobile for performance
+      const numImages = isMobile ? 8 : 16;
+
+      let currentDrag = null;
+      let dragOffsetX = 0;
+      let dragOffsetY = 0;
+
+      // Build an array of image paths
+      const allImages = [];
+      for (let i = 1; i <= 27; i++) {
+        allImages.push(`images/thumbnails/photo${i}.jpg`);
+      }
+
+      // Randomize and select the appropriate number of images
+      const selectedImages = allImages.sort(() => Math.random() - 0.5).slice(0, numImages);
+
+      selectedImages.forEach((src, index) => {
+        // Preload image using the Image object
+        const img = new Image();
+        img.src = src;
+        img.alt = `Photo ${index + 1}`;
+        img.classList.add("photo");
+        img.setAttribute("draggable", "false");
+        
+        // Use a smaller width range on mobile for faster loading
+        if (isMobile) {
+          img.style.width = `${150 + Math.random() * 150}px`;
+        } else {
+          img.style.width = `${200 + Math.random() * 200}px`;
+        }
+        img.style.top = `${Math.random() * 80}vh`;
+        img.style.left = `${Math.random() * 80}vw`;
+        img.style.zIndex = index;
+
+        // Append the image to the DOM only after it has loaded
+        img.onload = () => {
+          document.body.appendChild(img);
+        };
+
+        // Set up dragging events for the image
+        img.addEventListener("pointerdown", (e) => {
+          currentDrag = img;
+          dragOffsetX = e.clientX - img.offsetLeft;
+          dragOffsetY = e.clientY - img.offsetTop;
+          img.style.cursor = "grabbing";
+          // Bring the dragged image to the front
+          const allPhotos = Array.from(document.querySelectorAll('.photo'));
+          const maxZ = Math.max(...allPhotos.map(el => parseInt(el.style.zIndex) || 0));
+          img.style.zIndex = maxZ + 1;
+          e.preventDefault();
+        });
+      });
+
+      // Global pointermove handler for dragging images
+      document.addEventListener("pointermove", (e) => {
+        if (!currentDrag) return;
+        currentDrag.style.left = `${e.clientX - dragOffsetX}px`;
+        currentDrag.style.top = `${e.clientY - dragOffsetY}px`;
+      });
+
+      // End dragging when pointer is released or canceled
+      const endDrag = () => {
+        if (currentDrag) {
+          currentDrag.style.cursor = "grab";
+          currentDrag = null;
+        }
+      };
+      document.addEventListener("pointerup", endDrag);
+      document.addEventListener("pointercancel", endDrag);
     });
   </script>
 </body>
