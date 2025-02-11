@@ -101,26 +101,12 @@
       text-decoration: none;
       color: #000;
     }
-    /* New styling for the Gelatin link */
-    .gelatin {
-      position: fixed;
-      bottom: 5%;
-      left: 5%;
-      font-size: 18px;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      z-index: 3000;
-    }
-    .gelatin a {
-      text-decoration: none;
-      color: #000;
-    }
   </style>
 </head>
 <body>
   <div class="marquee-container" aria-hidden="true">
     <div class="marquee">
-     I'm a photographer based in Barcelona.  I publish photography books on topics that interest me such as drag racing in Sweden or death rituals in contemporary Inca culture. I also shoot commercial work for clients like L'Oreal Paris, Monies, Lacoste, Zalando, High Snobiety, British GQ, Thameen London.  I've recently become an unqualified industrial designer under the label Gelatin, working to solve on-set problems with better equipment design.
+   I'm a photographer based in Barcelona.  I publish photography books on topics that interest me such as drag racing in Sweden or death rituals in contemporary Inca culture. I also shoot commercial work for clients like L'Oreal Paris, Monies, Lacoste, Zalando, High Snobiety, British GQ, Thameen London.  I've recently become an unqualified industrial designer under the label Gelatin, working to solve on-set problems with better equipment design.
     </div>
   </div>
 
@@ -132,11 +118,6 @@
 
   <div class="instagram">
     <a href="https://www.instagram.com/tomas__hein" target="_blank" rel="noopener noreferrer">@tomas__hein</a>
-  </div>
-
-  <!-- New Gelatin link on the bottom left -->
-  <div class="gelatin">
-    <a href="https://www.gelatindigital.com" target="_blank" rel="noopener noreferrer">Gelatin</a>
   </div>
 
   <script>
