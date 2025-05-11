@@ -73,19 +73,27 @@
       color: #000;
       background-color: #fafafa;
     }
-    .right h1 {
+    .mobile-header {
+      display: none;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .mobile-header h1 {
       font-size: 24px;
       font-weight: bold;
-      margin-top: 0;
-      margin-bottom: 20px;
+      margin: 0;
+    }
+    .mobile-header .buy-mobile-container {
+      margin-right: 10px;
     }
     .artist-statement p {
       font-size: 14px;
       line-height: 1.5;
       margin-bottom: 1em;
     }
-    /* Responsive: stack columns and grid thumbnails */
+    /* Responsive: stack columns, grid thumbnails, and move buy button next to title */
     @media (max-width: 768px) {
+      html, body { overflow: auto; }
       .container {
         flex-direction: column;
         overflow-y: auto;
@@ -94,9 +102,16 @@
         width: 100%;
         height: auto;
       }
-      .buy-button-container {
-        position: static;
-        margin: 20px auto;
+      /* hide original buy button in left */
+      .left .buy-button-container {
+        display: none;
+      }
+      /* show mobile header with buy button and title inline */
+      .mobile-header {
+        display: flex;
+      }
+      /* move buy button into mobile header */
+      .buy-mobile-container {
         text-align: center;
       }
       .left {
@@ -111,7 +126,6 @@
         width: 100% !important;
         transform: none;
       }
-      html, body { overflow: auto; }
     }
   </style>
 </head>
@@ -124,8 +138,17 @@
         <div id="product-component-1746991516001"></div>
       </div>
     </div>
+
     <div class="right">
-      <h1>Flora Andina</h1>
+      <!-- Mobile header: buy button next to title -->
+      <div class="mobile-header">
+        <div class="buy-mobile-container">
+          <div id="product-component-1746991516001"></div>
+        </div>
+        <h1>Flora Andina</h1>
+      </div>
+      <!-- Desktop title -->
+      <h1 class="desktop-title">Flora Andina</h1>
       <div class="artist-statement">
         <p>Flora Andina is a meditation on remembrance—an attempt to navigate the borderlands between death and the everyday, between ritual and residue. Shot in 2022 across the cemeteries of Cachi and the surrounding landscapes near Angastaco in Salta, Argentina, the project stems from a simple but persistent question: What happens when we die?</p>
         <p>The photographs, all made with a documentary impulse but a poetic temperament, trace the presence of plastic flowers, painted tombs, devotional objects, and timeworn gestures of care. These scenes are not theatrical. They are ordinary. And yet, within their ordinariness, something profound lingers—a sense that the dead are still participants in the social life of the living. Not remembered in abstraction, but tended to, spoken with, offered things.</p>
