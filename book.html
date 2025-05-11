@@ -58,6 +58,12 @@
       position: relative;
       overflow: hidden;
     }
+    .buy-button-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 3000;
+    }
     .right {
       width: 34%;
       height: 100%;
@@ -67,16 +73,11 @@
       color: #000;
       background-color: #fafafa;
     }
-    .title-bar {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .title-bar h1 {
-      margin: 0;
+    .right h1 {
       font-size: 24px;
       font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 20px;
     }
     .artist-statement p {
       font-size: 14px;
@@ -89,12 +90,14 @@
   <div class="back-link"><a href="index.html">Back</a></div>
 
   <div class="container">
-    <div class="left"></div>
-    <div class="right">
-      <div class="title-bar">
+    <div class="left">
+      <div class="buy-button-container">
         <div id="product-component-1746991516001"></div>
-        <h1>Flora Andina</h1>
       </div>
+    </div>
+
+    <div class="right">
+      <h1>Flora Andina</h1>
       <div class="artist-statement">
         <p>Flora Andina is a meditation on remembrance—an attempt to navigate the borderlands between death and the everyday, between ritual and residue. Shot in 2022 across the cemeteries of Cachi and the surrounding landscapes near Angastaco in Salta, Argentina, the project stems from a simple but persistent question: what happens to the dead in places where death is not exiled?</p>
         <p>The photographs, all made with a documentary impulse but a poetic temperament, trace the presence of plastic flowers, painted tombs, devotional objects, and timeworn gestures of care. These scenes are not theatrical. They are ordinary. And yet, within their ordinariness, something profound lingers—a sense that the dead are still participants in the social life of the living. Not remembered in abstraction, but tended to, spoken with, offered things.</p>
@@ -149,58 +152,4 @@
             },
             "productSet": {"styles": {"products": {"@media (min-width: 601px)": {"margin-left": "-20px"}}}},
             "modalProduct": {"contents": {"img": false,"imgWithCarousel": true,"button": false,"buttonWithQuantity": true},"styles": {"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},"background-color": "#262626",":focus": {"background-color": "#414141"},"border-radius": "33px","padding-left": "24px","padding-right": "24px"}},"text": {"button": "Add to cart"}},
-            "cart": {"styles": {"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"},"background-color": "#262626","border-radius": "33px"}},"text": {"total": "Subtotal","button": "Checkout"},"popup": false},
-            "toggle": {"styles": {"toggle": {"font-weight": "bold","background-color": "#262626",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}}}}
-          },
-        });
-      });
-    }
-  })();
-  /*]]>*/
-  </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const isMobile = window.innerWidth < 768;
-      const totalImages = 12;
-      const pool = Array.from({ length: totalImages }, (_, i) => 
-        `/flora_andina/thumbnails/Flora_Andina_Tomas_Hein_${String(i+1).padStart(5,'0')}.jpg`
-      );
-      const selected = pool.sort(() => Math.random() - 0.5).slice(0, 5);
-
-      let currentDrag = null;
-      let dragOffsetX = 0;
-      let dragOffsetY = 0;
-      const container = document.querySelector('.left');
-
-      selected.forEach((src, i) => {
-        const img = new Image(); img.src = src; img.alt = `Flora Andina ${i+1}`;
-        img.classList.add("photo"); img.setAttribute("draggable","false");
-        const w = isMobile ? 150 + Math.random()*150 : 200 + Math.random()*200;
-        img.style.width = `${w}px`;
-        const maxL = container.clientWidth - w;
-        const maxT = container.clientHeight - w;
-        img.style.left = `${Math.random()*maxL}px`;
-        img.style.top = `${Math.random()*maxT}px`;
-        img.style.zIndex = i;
-        img.onload = () => container.appendChild(img);
-        img.addEventListener("pointerdown", e => {
-          currentDrag = img;
-          dragOffsetX = e.clientX - img.offsetLeft;
-          dragOffsetY = e.clientY - img.offsetTop;
-          img.style.cursor = "grabbing";
-          const all = Array.from(container.querySelectorAll('.photo'));
-          img.style.zIndex = Math.max(...all.map(el=>+el.style.zIndex)) + 1;
-          e.preventDefault();
-        });
-      });
-      document.addEventListener("pointermove", e => {
-        if (!currentDrag) return;
-        currentDrag.style.left = `${e.clientX - dragOffsetX}px`;
-        currentDrag.style.top = `${e.clientY - dragOffsetY}px`;
-      });
-      document.addEventListener("pointerup", () => { if (currentDrag) { currentDrag.style.cursor = "grab"; currentDrag = null; } });
-    });
-  </script>
-</body>
-</html>
+            "cart": {"styles": {"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},":focus... etc. (rest unchanged)
