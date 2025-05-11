@@ -86,6 +86,9 @@
     .mobile-header .buy-mobile-container {
       margin-right: 10px;
     }
+    .desktop-title {
+      margin: 0;
+    }
     .artist-statement p {
       font-size: 14px;
       line-height: 1.5;
@@ -93,10 +96,11 @@
     }
     /* Responsive: stack columns, grid thumbnails, and move buy button next to title */
     @media (max-width: 768px) {
-      html, body { overflow: auto; }
+      html, body { overflow-x: hidden; overflow-y: auto; }
       .container {
         flex-direction: column;
         overflow-y: auto;
+        padding: 0 10px;
       }
       .left, .right {
         width: 100%;
@@ -110,6 +114,10 @@
       .mobile-header {
         display: flex;
       }
+      /* hide desktop title on mobile */
+      .desktop-title {
+        display: none;
+      }
       /* move buy button into mobile header */
       .buy-mobile-container {
         text-align: center;
@@ -118,7 +126,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 10px;
-        padding: 10px;
+        padding: 10px 0;
         overflow-y: auto;
       }
       .photo {
@@ -217,7 +225,8 @@
         var num = ('00000' + i).slice(-5);
         pool.push('/flora_andina/thumbnails/Flora_Andina_Tomas_Hein_' + num + '.jpg');
       }
-      var selected = pool.sort(function() { return 0.5 - Math.random(); }).slice(0, 5);
+      var count = isMobile ? 3 : 5;
+      var selected = pool.sort(function() { return 0.5 - Math.random(); }).slice(0, count);
 
       var currentDrag = null, offsetX = 0, offsetY = 0;
       var container = document.querySelector('.left');
