@@ -91,35 +91,12 @@
       line-height: 1.5;
       margin-bottom: 1em;
     }
-    .drag-instruction {
-      position: absolute;
-      bottom: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 9px;
-      font-weight: bold;
-      z-index: 3000;
-    }
   </style>
 </head>
 <body>
   <div class="back-link"><a href="index.html">Back</a></div>
-  <div class="container">
-    <div class="left">
-      <div class="drag-instruction">touch photos to move</div>
-    </div>
-    <div class="right artist-statement">
-      <h1>Flora Andina</h1>
-      <p>Flora Andina is a meditation on remembrance—an attempt to navigate the borderlands between death and the everyday, between ritual and residue. Shot in 2022 across the cemeteries of Cachi and the surrounding landscapes near Angastaco in Salta, Argentina, the project stems from a simple but persistent question: what happens to the dead in places where death is not exiled?</p>
-      <p>The photographs, all made with a documentary impulse but a poetic temperament, trace the presence of plastic flowers, painted tombs, devotional objects, and timeworn gestures of care. These scenes are not theatrical. They are ordinary. And yet, within their ordinariness, something profound lingers—a sense that the dead are still participants in the social life of the living. Not remembered in abstraction, but tended to, spoken with, offered things.</p>
-      <p>The project draws from the anthropological insights of Dr. Pablo Mardones, whose accompanying essay contextualizes these practices within the cosmology of the Central Andes. But my interest is not academic. I am neither from this land nor entirely outside of it. I approach these cemeteries as someone who has worked for years within the image economy—fashion, commerce, beauty—yet here I wanted to look at something slower, more entropic. A different kind of devotion.</p>
-      <p>The title Flora Andina is both literal and ironic. The flora here is artificial, plastic, sun-bleached. Yet it’s also real in its symbolic weight, standing in for a memory that does not fade because it’s been constructed not to. In that sense, the work engages with the tension between permanence and decay, between sincerity and simulation. There’s beauty here, but also unease.</p>
-      <p>I see this book as a still life in the broadest sense—not an arrangement of flowers in a vase, but a portrait of how people arrange the traces of those they’ve lost. It sits in dialogue with photographic traditions that explore death through stillness: from Juan Manuel Echavarría’s symbolic floral arrangements made of bones, to Celine Marchbank’s tender tulips, to Ori Gersht’s exploding bouquets.</p>
-      <p>Flora Andina is not an ethnographic record. It is a document of presence, of gesture, and of the quiet politics of mourning. It’s a book about how the dead remain, and how we continue to live among them.</p>
-    </div>
-  </div>
   <div class="buy-button-container">
-    <div id="product-component-1746989428983"></div>
+    <div id="product-component-1746991516001"></div>
     <script type="text/javascript">
     /*<![CDATA[*/
     (function () {
@@ -148,8 +125,8 @@
         ShopifyBuy.UI.onReady(client).then(function (ui) {
           ui.createComponent('product', {
             id: '10222612644104',
-            node: document.getElementById('product-component-1746989428983'),
-            moneyFormat: '%E2%82%AC{{amount_with_comma_separator}}',
+            node: document.getElementById('product-component-1746991516001'),
+            moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
             options: {
               "product": {
                 "styles": {
@@ -162,26 +139,31 @@
                   },
                   "button": {
                     "font-weight": "bold",
-                    ":hover": { "background-color": "#414141" },
+                    ":hover": {"background-color": "#414141"},
                     "background-color": "#262626",
-                    ":focus": { "background-color": "#414141" },
+                    ":focus": {"background-color": "#414141"},
                     "border-radius": "33px",
                     "padding-left": "24px",
                     "padding-right": "24px"
                   }
                 },
                 "buttonDestination": "checkout",
-                "text": { "button": "Buy now" }
+                "contents": {"img": false,"title": false,"price": false},
+                "text": {"button": "Buy now"}
               },
-              "productSet": { "styles": { "products": { "@media (min-width: 601px)": { "margin-left": "-20px" } } } },
+              "productSet": {"styles": {"products": {"@media (min-width: 601px)": {"margin-left": "-20px"}}}},
               "modalProduct": {
-                "contents": { "img": false, "imgWithCarousel": true, "button": false, "buttonWithQuantity": true },
-                "styles": { "product": { "@media (min-width: 601px)": { "max-width": "100%", "margin-left": "0px", "margin-bottom": "0px" } }, "button": { "font-weight": "bold", ":hover": { "background-color": "#414141" }, "background-color": "#262626", ":focus": { "background-color": "#414141" }, "border-radius": "33px", "padding-left": "24px", "padding-right": "24px" } },
-                "text": { "button": "Add to cart" }
+                "contents": {"img": false,"imgWithCarousel": true,"button": false,"buttonWithQuantity": true},
+                "styles": {"product": {"@media (min-width: 601px)": {"max-width": "100%","margin-left": "0px","margin-bottom": "0px"}},"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},"background-color": "#262626",":focus": {"background-color": "#414141"},"border-radius": "33px","padding-left": "24px","padding-right": "24px"}},
+                "text": {"button": "Add to cart"}
               },
               "option": {},
-              "cart": { "styles": { "button": { "font-weight": "bold", ":hover": { "background-color": "#414141" }, ":focus": { "background-color": "#414141" }, "background-color": "#262626", "border-radius": "33px" } }, "text": { "total": "Subtotal", "button": "Checkout" }, "popup": false },
-              "toggle": { "styles": { "toggle": { "font-weight": "bold", "background-color": "#262626", ":hover": { "background-color": "#414141" }, ":focus": { "background-color": "#414141" } } } }
+              "cart": {
+                "styles": {"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"},"background-color": "#262626","border-radius": "33px"}},
+                "text": {"total": "Subtotal","button": "Checkout"},
+                "popup": false
+              },
+              "toggle": {"styles": {"toggle": {"font-weight": "bold","background-color": "#262626",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}}}}
             },
           });
         });
@@ -190,11 +172,22 @@
     /*]]>*/
     </script>
   </div>
+  <div class="container">
+    <div class="left"></div>
+    <div class="right artist-statement">
+      <h1>Flora Andina</h1>
+      <p>Flora Andina is a meditation on remembrance—an attempt to navigate the borderlands between death and the everyday, between ritual and residue. Shot in 2022 across the cemeteries of Cachi and the surrounding landscapes near Angastaco in Salta, Argentina, the project stems from a simple but persistent question: what happens to the dead in places where death is not exiled?</p>
+      <p>The photographs, all made with a documentary impulse but a poetic temperament, trace the presence of plastic flowers, painted tombs, devotional objects, and timeworn gestures of care. These scenes are not theatrical. They are ordinary. And yet, within their ordinariness, something profound lingers—a sense that the dead are still participants in the social life of the living. Not remembered in abstraction, but tended to, spoken with, offered things.</p>
+      <p>The project draws from the anthropological insights of Dr. Pablo Mardones, whose accompanying essay contextualizes these practices within the cosmology of the Central Andes. But my interest is not academic. I am neither from this land nor entirely outside of it. I approach these cemeteries as someone who has worked for years within the image economy—fashion, commerce, beauty—yet here I wanted to look at something slower, more entropic. A different kind of devotion.</p>
+      <p>The title Flora Andina is both literal and ironic. The flora here is artificial, plastic, sun-bleached. Yet it’s also real in its symbolic weight, standing in for a memory that does not fade because it’s been constructed not to. In that sense, the work engages with the tension between permanence and decay, between sincerity and simulation. There’s beauty here, but also unease.</p>
+      <p>I see this book as a still life in the broadest sense—not an arrangement of flowers in a vase, but a portrait of how people arrange the traces of those they’ve lost. It sits in dialogue with photographic traditions that explore death through stillness: from Juan Manuel Echavarría’s symbolic floral arrangements made of bones, to Celine Marchbank’s tender tulips, to Ori Gersht’s exploding bouquets.</p>
+      <p>Flora Andina is not an ethnographic record. It is a document of presence, of gesture, and of the quiet politics of mourning. It’s a book about how the dead remain, and how we continue to live among them.</p>
+    </div>
+  </div>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const isMobile = window.innerWidth < 768;
       const totalImages = 12;
-      // Build and shuffle pool
       const allImages = [];
       for (let i = 1; i <= totalImages; i++) {
         const numStr = String(i).padStart(5, '0');
