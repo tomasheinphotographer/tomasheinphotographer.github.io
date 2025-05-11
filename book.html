@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Buy My Book | Tomas Hein</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- copy over any other <link> or <script> tags you use site-wide -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <!-- highlight the current page -->
+      <a href="book.html" class="active">Book</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Get Your Copy</h1>
+    <p>My latest photography book chronicles drag racing in Sweden and contemporary Inca death rituals. Grab yours below!</p>
+
+    <!-- Shopify Buy Button -->
+    <div id="product-component-1746989428983"></div>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    (function () {
+      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+      if (window.ShopifyBuy) {
+        if (window.ShopifyBuy.UI) {
+          ShopifyBuyInit();
+        } else {
+          loadScript();
+        }
+      } else {
+        loadScript();
+      }
+      function loadScript() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = scriptURL;
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0])
+         .appendChild(script);
+        script.onload = ShopifyBuyInit;
+      }
+      function ShopifyBuyInit() {
+        var client = ShopifyBuy.buildClient({
+          domain: '38e404-fe.myshopify.com',
+          storefrontAccessToken: 'e38bc09ccd6db65f9381a7b4a53f4c73',
+        });
+        ShopifyBuy.UI.onReady(client).then(function (ui) {
+          ui.createComponent('product', {
+            id: '10222612644104',
+            node: document.getElementById('product-component-1746989428983'),
+            moneyFormat: '%E2%82%AC{{amount_with_comma_separator}}',
+            options: {
+              "product": {
+                "styles": {
+                  "product": {
+                    "@media (min-width: 601px)": {
+                      "max-width": "calc(25% - 20px)",
+                      "margin-left": "20px",
+                      "margin-bottom": "50px"
+                    }
+                  },
+                  "button": {
+                    "font-weight": "bold",
+                    ":hover": { "background-color": "#414141" },
+                    "background-color": "#262626",
+                    ":focus": { "background-color": "#414141" },
+                    "border-radius": "33px",
+                    "padding-left": "24px",
+                    "padding-right": "24px"
+                  }
+                },
+                "buttonDestination": "checkout",
+                "text": { "button": "Buy now" }
+              },
+              "modalProduct": {
+                "contents": {
+                  "img": false,
+                  "imgWithCarousel": true,
+                  "button": false,
+                  "buttonWithQuantity": true
+                },
+                "styles": {
+                  "button": {
+                    "font-weight": "bold",
+                    ":hover": { "background-color": "#414141" },
+                    "background-color": "#262626",
+                    ":focus": { "background-color": "#414141" },
+                    "border-radius": "33px",
+                    "padding-left": "24px",
+                    "padding-right": "24px"
+                  }
+                },
+                "text": { "button": "Add to cart" }
+              },
+              "cart": {
+                "styles": {
+                  "button": {
+                    "font-weight": "bold",
+                    ":hover": { "background-color": "#414141" },
+                    "background-color": "#262626",
+                    ":focus": { "background-color": "#414141" },
+                    "border-radius": "33px"
+                  }
+                },
+                "text": {
+                  "total": "Subtotal",
+                  "button": "Checkout"
+                },
+                "popup": false
+              },
+              "toggle": {
+                "styles": {
+                  "toggle": {
+                    "font-weight": "bold",
+                    "background-color": "#262626",
+                    ":hover": { "background-color": "#414141" },
+                    ":focus": { "background-color": "#414141" }
+                  }
+                }
+              }
+            },
+          });
+        });
+      }
+    })();
+    /*]]>*/
+    </script>
+  </main>
+
+  <footer>
+    <p>© 2025 Tomas Hein</p>
+  </footer>
+</body>
+</html>

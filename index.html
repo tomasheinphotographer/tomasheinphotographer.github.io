@@ -22,7 +22,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-77Y60ETCBT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){dataLayer.push(arguments);}    
     gtag('js', new Date());
     gtag('config', 'G-77Y60ETCBT');
   </script>
@@ -78,10 +78,24 @@
       text-decoration: none;
       color: #000;
     }
-    .drag-instruction {
+    .buy-book {
       position: fixed;
       top: 5%;
       left: 5%;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      z-index: 3000;
+    }
+    .buy-book a {
+      text-decoration: none;
+      color: #000;
+    }
+    .drag-instruction {
+      position: fixed;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 9px;
       font-family: Arial, sans-serif;
       font-weight: bold;
@@ -124,6 +138,10 @@
 
   <div class="contact">
     <a href="mailto:tomas@tomashein.com">Say Hello</a>
+  </div>
+
+  <div class="buy-book">
+    <a href="book.html">Buy my book</a>
   </div>
 
   <div class="drag-instruction">touch photos to move</div>
