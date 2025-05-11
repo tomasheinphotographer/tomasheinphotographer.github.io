@@ -32,58 +32,62 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      position: relative;
+      font-family: Arial, sans-serif;
       background-color: #fff;
     }
-    .photo {
-      position: absolute;
-      cursor: grab;
-      transition: transform 0.3s ease-in-out;
-      user-drag: none;
-      -webkit-user-drag: none;
-    }
     .back-link {
-      position: fixed;
+      position: absolute;
       top: 5%;
       left: 5%;
       font-size: 18px;
-      font-family: Arial, sans-serif;
       font-weight: bold;
-      z-index: 3000;
+      z-index: 4000;
     }
     .back-link a {
       text-decoration: none;
       color: #000;
     }
-    .buy-button-container {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 3000;
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100%;
     }
-    .artist-statement {
-      position: fixed;
-      top: 62%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      max-width: 600px;
+    .left {
+      width: 66%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .right {
+      width: 34%;
+      height: 100%;
+      overflow-y: auto;
+      padding: 30px;
+      box-sizing: border-box;
+      color: #000;
+    }
+    .buy-button-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 3000;
+      text-align: center;
+    }
+    .artist-statement h1 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+    .artist-statement p {
       font-size: 14px;
       line-height: 1.5;
-      font-family: Arial, sans-serif;
-      color: #000;
-      z-index: 3000;
-      text-align: left;
+      margin-bottom: 1em;
     }
     .drag-instruction {
-      position: fixed;
+      position: absolute;
       bottom: 5%;
       left: 50%;
       transform: translateX(-50%);
       font-size: 9px;
-      font-family: Arial, sans-serif;
       font-weight: bold;
       z-index: 3000;
     }
@@ -91,65 +95,65 @@
 </head>
 <body>
   <div class="back-link"><a href="index.html">Back</a></div>
-
-  <div class="buy-button-container">
-    <div id="product-component-1746989428983"></div>
-    <script type="text/javascript">
-    /*<![CDATA[*/
-    (function () {
-      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-      if (window.ShopifyBuy) {
-        if (window.ShopifyBuy.UI) {
-          ShopifyBuyInit();
-        } else {
-          loadScript();
-        }
-      } else {
-        loadScript();
-      }
-      function loadScript() {
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = scriptURL;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-        script.onload = ShopifyBuyInit;
-      }
-      function ShopifyBuyInit() {
-        var client = ShopifyBuy.buildClient({
-          domain: '38e404-fe.myshopify.com',
-          storefrontAccessToken: 'e38bc09ccd6db65f9381a7b4a53f4c73',
-        });
-        ShopifyBuy.UI.onReady(client).then(function (ui) {
-          ui.createComponent('product', {
-            id: '10222612644104',
-            node: document.getElementById('product-component-1746989428983'),
-            moneyFormat: '%E2%82%AC{{amount_with_comma_separator}}',
-            options: {/* same options as index */
-              "product": {"styles": {"button": {"font-weight": "bold","background-color": "#262626","border-radius": "33px","padding-left": "24px","padding-right": "24px","": {":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}}},"text": {"button": "Buy now"}},
-              "modalProduct": {"contents": {"img": false,"imgWithCarousel": true,"button": false,"buttonWithQuantity": true},"styles": {"button": {"font-weight": "bold","background-color": "#262626","border-radius": "33px","padding-left": "24px","padding-right": "24px",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}}},"text": {"button": "Add to cart"}},
-              "cart": {"styles": {"button": {"font-weight": "bold","background-color": "#262626","border-radius": "33px",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}}},"text": {"total": "Subtotal","button": "Checkout"},"popup": false},
-              "toggle": {"styles": {"toggle": {"font-weight": "bold","background-color": "#262626",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}}}}
-            },
-          });
-        });
-      }
-    })();
-    /*]]>*/
-    </script>
+  <div class="container">
+    <div class="left">
+      <div class="buy-button-container">
+        <div id="product-component-1746989428983"></div>
+        <script type="text/javascript">
+        /*<![CDATA[*/
+        (function () {
+          var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+          if (window.ShopifyBuy) {
+            if (window.ShopifyBuy.UI) {
+              ShopifyBuyInit();
+            } else {
+              loadScript();
+            }
+          } else {
+            loadScript();
+          }
+          function loadScript() {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = scriptURL;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+            script.onload = ShopifyBuyInit;
+          }
+          function ShopifyBuyInit() {
+            var client = ShopifyBuy.buildClient({
+              domain: '38e404-fe.myshopify.com',
+              storefrontAccessToken: 'e38bc09ccd6db65f9381a7b4a53f4c73',
+            });
+            ShopifyBuy.UI.onReady(client).then(function (ui) {
+              ui.createComponent('product', {
+                id: '10222612644104',
+                node: document.getElementById('product-component-1746989428983'),
+                moneyFormat: '%E2%82%AC{{amount_with_comma_separator}}',
+                options: {
+                  "product": {"styles": {"button": {"font-weight": "bold","": {":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}},"background-color": "#262626","border-radius": "33px","padding-left": "24px","padding-right": "24px"}},"text": {"button": "Buy now"}},
+                  "modalProduct": {"contents": {"img": false,"imgWithCarousel": true,"button": false,"buttonWithQuantity": true},"styles": {"button": {"font-weight": "bold","": {":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}},"background-color": "#262626","border-radius": "33px","padding-left": "24px","padding-right": "24px"}},"text": {"button": "Add to cart"}},
+                  "cart": {"styles": {"button": {"font-weight": "bold","": {":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}},"background-color": "#262626","border-radius": "33px"}},"text": {"total": "Subtotal","button": "Checkout"},"popup": false},
+                  "toggle": {"styles": {"toggle": {"font-weight": "bold","": {":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}},"background-color": "#262626"}}}
+                },
+              });
+            });
+          }
+        })();
+        /*]]>*/
+        </script>
+      </div>
+      <div class="drag-instruction">touch photos to move</div>
+    </div>
+    <div class="right artist-statement">
+      <h1>Flora Andina</h1>
+      <p>Flora Andina is a meditation on remembrance—an attempt to navigate the borderlands between death and the everyday, between ritual and residue. Shot in 2022 across the cemeteries of Cachi and the surrounding landscapes near Angastaco in Salta, Argentina, the project stems from a simple but persistent question: what happens to the dead in places where death is not exiled?</p>
+      <p>The photographs, all made with a documentary impulse but a poetic temperament, trace the presence of plastic flowers, painted tombs, devotional objects, and timeworn gestures of care. These scenes are not theatrical. They are ordinary. And yet, within their ordinariness, something profound lingers—a sense that the dead are still participants in the social life of the living. Not remembered in abstraction, but tended to, spoken with, offered things.</p>
+      <p>The project draws from the anthropological insights of Dr. Pablo Mardones, whose accompanying essay contextualizes these practices within the cosmology of the Central Andes. But my interest is not academic. I am neither from this land nor entirely outside of it. I approach these cemeteries as someone who has worked for years within the image economy—fashion, commerce, beauty—yet here I wanted to look at something slower, more entropic. A different kind of devotion.</p>
+      <p>The title Flora Andina is both literal and ironic. The flora here is artificial, plastic, sun-bleached. Yet it’s also real in its symbolic weight, standing in for a memory that does not fade because it’s been constructed not to. In that sense, the work engages with the tension between permanence and decay, between sincerity and simulation. There’s beauty here, but also unease.</p>
+      <p>I see this book as a still life in the broadest sense—not an arrangement of flowers in a vase, but a portrait of how people arrange the traces of those they’ve lost. It sits in dialogue with photographic traditions that explore death through stillness: from Juan Manuel Echavarría’s symbolic floral arrangements made of bones, to Celine Marchbank’s tender tulips, to Ori Gersht’s exploding bouquets.</p>
+      <p>Flora Andina is not an ethnographic record. It is a document of presence, of gesture, and of the quiet politics of mourning. It’s a book about how the dead remain, and how we continue to live among them.</p>
+    </div>
   </div>
-
-  <div class="artist-statement">
-    <h1>Flora Andina</h1>
-    <p>Flora Andina is a meditation on remembrance—an attempt to navigate the borderlands between death and the everyday, between ritual and residue. Shot in 2022 across the cemeteries of Cachi and the surrounding landscapes near Angastaco in Salta, Argentina, the project stems from a simple but persistent question: what happens to the dead in places where death is not exiled?</p>
-    <p>The photographs, all made with a documentary impulse but a poetic temperament, trace the presence of plastic flowers, painted tombs, devotional objects, and timeworn gestures of care. These scenes are not theatrical. They are ordinary. And yet, within their ordinariness, something profound lingers—a sense that the dead are still participants in the social life of the living. Not remembered in abstraction, but tended to, spoken with, offered things.</p>
-    <p>The project draws from the anthropological insights of Dr. Pablo Mardones, whose accompanying essay contextualizes these practices within the cosmology of the Central Andes. But my interest is not academic. I am neither from this land nor entirely outside of it. I approach these cemeteries as someone who has worked for years within the image economy—fashion, commerce, beauty—yet here I wanted to look at something slower, more entropic. A different kind of devotion.</p>
-    <p>The title Flora Andina is both literal and ironic. The flora here is artificial, plastic, sun-bleached. Yet it’s also real in its symbolic weight, standing in for a memory that does not fade because it’s been constructed not to. In that sense, the work engages with the tension between permanence and decay, between sincerity and simulation. There’s beauty here, but also unease.</p>
-    <p>I see this book as a still life in the broadest sense—not an arrangement of flowers in a vase, but a portrait of how people arrange the traces of those they’ve lost. It sits in dialogue with photographic traditions that explore death through stillness: from Juan Manuel Echavarría’s symbolic floral arrangements made of bones, to Celine Marchbank’s tender tulips, to Ori Gersht’s exploding bouquets.</p>
-    <p>Flora Andina is not an ethnographic record. It is a document of presence, of gesture, and of the quiet politics of mourning. It’s a book about how the dead remain, and how we continue to live among them.</p>
-  </div>
-
-  <div class="drag-instruction">touch photos to move</div>
-
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const isMobile = window.innerWidth < 768;
@@ -158,52 +162,43 @@
       let dragOffsetX = 0;
       let dragOffsetY = 0;
 
-      // Build array of flora_andina thumbnails
-      const allImages = [];
+      const container = document.querySelector('.left');
       for (let i = 1; i <= imageCount; i++) {
         const numStr = String(i).padStart(5, '0');
-        allImages.push(`/flora_andina/thumbnails/Flora_Andina_Tomas_Hein_${numStr}.jpg`);
-      }
-
-      allImages.forEach((src, index) => {
+        const src = `/flora_andina/thumbnails/Flora_Andina_Tomas_Hein_${numStr}.jpg`;
         const img = new Image();
         img.src = src;
-        img.alt = `Flora Andina ${index + 1}`;
+        img.alt = `Flora Andina ${i}`;
         img.classList.add("photo");
         img.setAttribute("draggable", "false");
 
         const imgWidth = isMobile ? (150 + Math.random() * 150) : (200 + Math.random() * 200);
         img.style.width = `${imgWidth}px`;
 
-        const maxLeft = window.innerWidth - imgWidth;
-        const maxTop = window.innerHeight - imgWidth;
+        const maxLeft = container.clientWidth - imgWidth;
+        const maxTop = container.clientHeight - imgWidth;
 
         img.style.left = `${Math.random() * maxLeft}px`;
         img.style.top = `${Math.random() * maxTop}px`;
-        img.style.zIndex = index;
+        img.style.zIndex = i;
 
-        img.onload = () => {
-          document.body.appendChild(img);
-        };
-
+        img.onload = () => container.appendChild(img);
         img.addEventListener("pointerdown", (e) => {
           currentDrag = img;
           dragOffsetX = e.clientX - img.offsetLeft;
           dragOffsetY = e.clientY - img.offsetTop;
           img.style.cursor = "grabbing";
-          const allPhotos = Array.from(document.querySelectorAll('.photo'));
+          const allPhotos = Array.from(container.querySelectorAll('.photo'));
           const maxZ = Math.max(...allPhotos.map(el => parseInt(el.style.zIndex) || 0));
           img.style.zIndex = maxZ + 1;
           e.preventDefault();
         });
-      });
-
+      }
       document.addEventListener("pointermove", (e) => {
         if (!currentDrag) return;
         currentDrag.style.left = `${e.clientX - dragOffsetX}px`;
         currentDrag.style.top = `${e.clientY - dragOffsetY}px`;
       });
-
       const endDrag = () => {
         if (currentDrag) {
           currentDrag.style.cursor = "grab";
