@@ -7,14 +7,6 @@
   <title>Flora Andina | Tomas Hein</title>
   <meta name="description" content="Flora Andina by Tomas Hein: a meditation on remembrance—an attempt to navigate the borderlands between death and the everyday.">
   <meta name="keywords" content="Flora Andina, Tomas Hein, photography, book, cemeteries, Argentina">
-  <meta property="og:title" content="Flora Andina | Tomas Hein">
-  <meta property="og:description" content="Flora Andina by Tomas Hein: a meditation on remembrance across Andean cemeteries.">
-  <meta property="og:image" content="/flora_andina/thumbnails/Flora_Andina_Tomas_Hein_00001.jpg">
-  <meta property="og:url" content="https://www.tomashein.com/book.html">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Flora Andina | Tomas Hein">
-  <meta name="twitter:description" content="Flora Andina by Tomas Hein: a meditation on remembrance across Andean cemeteries.">
-  <meta name="twitter:image" content="/flora_andina/thumbnails/Flora_Andina_Tomas_Hein_00001.jpg">
 
   <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-77Y60ETCBT"></script>
@@ -42,22 +34,41 @@
       user-drag: none;
       -webkit-user-drag: none;
     }
-    .back-link {
+    .header {
       position: absolute;
       top: 5%;
       left: 5%;
-      font-size: 18px;
-      font-weight: bold;
+      right: 5%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
       z-index: 4000;
     }
-    .back-link a {
+    .header .back-link,
+    .header .buy-button,
+    .header .title {
+      margin: 0;
+    }
+    .back-link a,
+    .buy-button a {
+      font-size: 18px;
+      font-weight: bold;
       text-decoration: none;
       color: #000;
+    }
+    .title h1 {
+      font-size: 24px;
+      margin: 0;
+      font-weight: bold;
     }
     .container {
       display: flex;
       width: 100%;
       height: 100%;
+      /* push content below header */
+      padding-top: 60px;
+      box-sizing: border-box;
     }
     .left {
       width: 66%;
@@ -74,18 +85,6 @@
       color: #000;
       background-color: #fafafa;
     }
-    .buy-button-container {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3000;
-      text-align: center;
-    }
-    .artist-statement h1 {
-      margin-top: 0;
-      font-size: 24px;
-    }
     .artist-statement p {
       font-size: 14px;
       line-height: 1.5;
@@ -94,88 +93,17 @@
   </style>
 </head>
 <body>
-  <div class="back-link"><a href="index.html">Back</a></div>
-  <div class="buy-button-container">
-    <div id="product-component-1746991516001"></div>
-    <script type="text/javascript">
-    /*<![CDATA[*/
-    (function () {
-      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-      if (window.ShopifyBuy) {
-        if (window.ShopifyBuy.UI) {
-          ShopifyBuyInit();
-        } else {
-          loadScript();
-        }
-      } else {
-        loadScript();
-      }
-      function loadScript() {
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = scriptURL;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-        script.onload = ShopifyBuyInit;
-      }
-      function ShopifyBuyInit() {
-        var client = ShopifyBuy.buildClient({
-          domain: '38e404-fe.myshopify.com',
-          storefrontAccessToken: 'e38bc09ccd6db65f9381a7b4a53f4c73',
-        });
-        ShopifyBuy.UI.onReady(client).then(function (ui) {
-          ui.createComponent('product', {
-            id: '10222612644104',
-            node: document.getElementById('product-component-1746991516001'),
-            moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
-            options: {
-              "product": {
-                "styles": {
-                  "product": {
-                    "@media (min-width: 601px)": {
-                      "max-width": "calc(25% - 20px)",
-                      "margin-left": "20px",
-                      "margin-bottom": "50px"
-                    }
-                  },
-                  "button": {
-                    "font-weight": "bold",
-                    ":hover": {"background-color": "#414141"},
-                    "background-color": "#262626",
-                    ":focus": {"background-color": "#414141"},
-                    "border-radius": "33px",
-                    "padding-left": "24px",
-                    "padding-right": "24px"
-                  }
-                },
-                "buttonDestination": "checkout",
-                "contents": {"img": false,"title": false,"price": false},
-                "text": {"button": "Buy now"}
-              },
-              "productSet": {"styles": {"products": {"@media (min-width: 601px)": {"margin-left": "-20px"}}}},
-              "modalProduct": {
-                "contents": {"img": false,"imgWithCarousel": true,"button": false,"buttonWithQuantity": true},
-                "styles": {"product": {"@media (min-width: 601px)": {"max-width": "100%","margin-left": "0px","margin-bottom": "0px"}},"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},"background-color": "#262626",":focus": {"background-color": "#414141"},"border-radius": "33px","padding-left": "24px","padding-right": "24px"}},
-                "text": {"button": "Add to cart"}
-              },
-              "option": {},
-              "cart": {
-                "styles": {"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"},"background-color": "#262626","border-radius": "33px"}},
-                "text": {"total": "Subtotal","button": "Checkout"},
-                "popup": false
-              },
-              "toggle": {"styles": {"toggle": {"font-weight": "bold","background-color": "#262626",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}}}}
-            },
-          });
-        });
-      }
-    })();
-    /*]]>*/
-    </script>
+  <div class="header">
+    <div class="back-link"><a href="index.html">Back</a></div>
+    <div class="buy-button">
+      <div id="product-component-1746991516001"></div>
+    </div>
+    <div class="title"><h1>Flora Andina</h1></div>
   </div>
+
   <div class="container">
     <div class="left"></div>
     <div class="right artist-statement">
-      <h1>Flora Andina</h1>
       <p>Flora Andina is a meditation on remembrance—an attempt to navigate the borderlands between death and the everyday, between ritual and residue. Shot in 2022 across the cemeteries of Cachi and the surrounding landscapes near Angastaco in Salta, Argentina, the project stems from a simple but persistent question: what happens to the dead in places where death is not exiled?</p>
       <p>The photographs, all made with a documentary impulse but a poetic temperament, trace the presence of plastic flowers, painted tombs, devotional objects, and timeworn gestures of care. These scenes are not theatrical. They are ordinary. And yet, within their ordinariness, something profound lingers—a sense that the dead are still participants in the social life of the living. Not remembered in abstraction, but tended to, spoken with, offered things.</p>
       <p>The project draws from the anthropological insights of Dr. Pablo Mardones, whose accompanying essay contextualizes these practices within the cosmology of the Central Andes. But my interest is not academic. I am neither from this land nor entirely outside of it. I approach these cemeteries as someone who has worked for years within the image economy—fashion, commerce, beauty—yet here I wanted to look at something slower, more entropic. A different kind of devotion.</p>
@@ -184,65 +112,88 @@
       <p>Flora Andina is not an ethnographic record. It is a document of presence, of gesture, and of the quiet politics of mourning. It’s a book about how the dead remain, and how we continue to live among them.</p>
     </div>
   </div>
+
+  <!-- Shopify Button Script -->
+  <script type="text/javascript">
+  /*<![CDATA[*/
+  (function () {
+    var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+    function loadScript() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = scriptURL;
+      document.head.appendChild(script);
+      script.onload = ShopifyBuyInit;
+    }
+    if (window.ShopifyBuy) {
+      if (window.ShopifyBuy.UI) ShopifyBuyInit(); else loadScript();
+    } else loadScript();
+
+    function ShopifyBuyInit() {
+      var client = ShopifyBuy.buildClient({
+        domain: '38e404-fe.myshopify.com',
+        storefrontAccessToken: 'e38bc09ccd6db65f9381a7b4a53f4c73',
+      });
+      ShopifyBuy.UI.onReady(client).then(function (ui) {
+        ui.createComponent('product', {
+          id: '10222612644104',
+          node: document.getElementById('product-component-1746991516001'),
+          moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
+          options: {
+            "product": {"styles": {"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},"background-color": "#262626",":focus": {"background-color": "#414141"},"border-radius": "33px","padding-left": "24px","padding-right": "24px"}},"contents": {"img": false,"title": false,"price": false},"text": {"button": "Buy now"}},
+            "productSet": {"styles": {"products": {"@media (min-width: 601px)": {"margin-left": "-20px"}}}},
+            "modalProduct": {"contents": {"img": false,"imgWithCarousel": true,"button": false,"buttonWithQuantity": true},"styles": {"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},"background-color": "#262626",":focus": {"background-color": "#414141"},"border-radius": "33px","padding-left": "24px","padding-right": "24px"}},"text": {"button": "Add to cart"}},
+            "cart": {"styles": {"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"},"background-color": "#262626","border-radius": "33px"}},"text": {"total": "Subtotal","button": "Checkout"},"popup": false},
+            "toggle": {"styles": {"toggle": {"font-weight": "bold","background-color": "#262626",":hover": {"background-color": "#414141"},":focus": {"background-color": "#414141"}}}}
+          },
+        });
+      });
+    }
+  })();
+  /*]]>*/
+  </script>
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const isMobile = window.innerWidth < 768;
       const totalImages = 12;
-      const allImages = [];
-      for (let i = 1; i <= totalImages; i++) {
-        const numStr = String(i).padStart(5, '0');
-        allImages.push(`/flora_andina/thumbnails/Flora_Andina_Tomas_Hein_${numStr}.jpg`);
-      }
-      const selected = allImages.sort(() => Math.random() - 0.5).slice(0, 5);
+      const pool = Array.from({ length: totalImages }, (_, i) => 
+        `/flora_andina/thumbnails/Flora_Andina_Tomas_Hein_${String(i+1).padStart(5,'0')}.jpg`
+      );
+      const selected = pool.sort(() => Math.random() - 0.5).slice(0, 5);
 
       let currentDrag = null;
       let dragOffsetX = 0;
       let dragOffsetY = 0;
       const container = document.querySelector('.left');
 
-      selected.forEach((src, index) => {
-        const img = new Image();
-        img.src = src;
-        img.alt = `Flora Andina ${index + 1}`;
-        img.classList.add("photo");
-        img.setAttribute("draggable", "false");
-
-        const imgWidth = isMobile ? (150 + Math.random() * 150) : (200 + Math.random() * 200);
-        img.style.width = `${imgWidth}px`;
-
-        const maxLeft = container.clientWidth - imgWidth;
-        const maxTop = container.clientHeight - imgWidth;
-
-        img.style.left = `${Math.random() * maxLeft}px`;
-        img.style.top = `${Math.random() * maxTop}px`;
-        img.style.zIndex = index;
-
+      selected.forEach((src, i) => {
+        const img = new Image(); img.src = src; img.alt = `Flora Andina ${i+1}`;
+        img.classList.add("photo"); img.setAttribute("draggable","false");
+        const w = isMobile ? 150 + Math.random()*150 : 200 + Math.random()*200;
+        img.style.width = `${w}px`;
+        const maxL = container.clientWidth - w;
+        const maxT = container.clientHeight - w;
+        img.style.left = `${Math.random()*maxL}px`;
+        img.style.top = `${Math.random()*maxT}px`;
+        img.style.zIndex = i;
         img.onload = () => container.appendChild(img);
-        img.addEventListener("pointerdown", (e) => {
+        img.addEventListener("pointerdown", e => {
           currentDrag = img;
           dragOffsetX = e.clientX - img.offsetLeft;
           dragOffsetY = e.clientY - img.offsetTop;
           img.style.cursor = "grabbing";
-          const allPhotos = Array.from(container.querySelectorAll('.photo'));
-          const maxZ = Math.max(...allPhotos.map(el => parseInt(el.style.zIndex) || 0));
-          img.style.zIndex = maxZ + 1;
+          const all = Array.from(container.querySelectorAll('.photo'));
+          img.style.zIndex = Math.max(...all.map(el=>+el.style.zIndex)) + 1;
           e.preventDefault();
         });
       });
-
-      document.addEventListener("pointermove", (e) => {
+      document.addEventListener("pointermove", e => {
         if (!currentDrag) return;
         currentDrag.style.left = `${e.clientX - dragOffsetX}px`;
         currentDrag.style.top = `${e.clientY - dragOffsetY}px`;
       });
-      const endDrag = () => {
-        if (currentDrag) {
-          currentDrag.style.cursor = "grab";
-          currentDrag = null;
-        }
-      };
-      document.addEventListener("pointerup", endDrag);
-      document.addEventListener("pointercancel", endDrag);
+      document.addEventListener("pointerup", () => { if (currentDrag) { currentDrag.style.cursor = "grab"; currentDrag = null; }});
     });
   </script>
 </body>
