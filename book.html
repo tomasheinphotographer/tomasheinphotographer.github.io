@@ -109,27 +109,21 @@
     </div>
   </div>
 
-  <!-- Shopify Button Script -->
   <script type="text/javascript">
   /*<![CDATA[*/
   (function () {
     var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-    if (window.ShopifyBuy) {
-      if (window.ShopifyBuy.UI) {
-        ShopifyBuyInit();
-      } else {
-        loadScript();
-      }
-    } else {
-      loadScript();
-    }
     function loadScript() {
       var script = document.createElement('script');
       script.async = true;
       script.src = scriptURL;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+      (document.head || document.body).appendChild(script);
       script.onload = ShopifyBuyInit;
     }
+    if (window.ShopifyBuy) {
+      if (window.ShopifyBuy.UI) ShopifyBuyInit(); else loadScript();
+    } else loadScript();
+
     function ShopifyBuyInit() {
       var client = ShopifyBuy.buildClient({
         domain: '38e404-fe.myshopify.com',
@@ -141,15 +135,78 @@
           node: document.getElementById('product-component-1746991516001'),
           moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
           options: {
-            "product": {
-              "styles": {
-                "product": {"@media (min-width: 601px)": {"max-width": "calc(25% - 20px)","margin-left": "20px","margin-bottom": "50px"}},
-                "button": {"font-weight": "bold",":hover": {"background-color": "#414141"},"background-color": "#262626",":focus": {"background-color": "#414141"},"border-radius": "33px","padding-left": "24px","padding-right": "24px"}
+            product: {
+              styles: {
+                product: { '@media (min-width: 601px)': { 'max-width': 'calc(25% - 20px)', 'margin-left': '20px', 'margin-bottom': '50px' } },
+                button: { 'font-weight': 'bold', ':hover': { 'background-color': '#414141' }, 'background-color': '#262626', ':focus': { 'background-color': '#414141' }, 'border-radius': '33px', 'padding-left': '24px', 'padding-right': '24px' }
               },
-              "buttonDestination": "checkout",
-              "contents": {"img": false,"title": false,"price": false},
-              "text": {"button": "Buy now"}
+              buttonDestination: 'checkout',
+              contents: { img: false, title: false, price: false },
+              text: { button: 'Buy now' }
             },
-            "productSet": {"styles": {"products": {"@media (min-width: 601px)": {"margin-left": "-20px"}}}},
-            "modalProduct": {"contents": {"img": false,"imgWithCarousel": true,"button": false,"buttonWithQuantity": true},"styles": {"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},"background-color": "#262626",":focus": {"background-color": "#414141"},"border-radius": "33px","padding-left": "24px","padding-right": "24px"}},"text": {"button": "Add to cart"}},
-            "cart": {"styles": {"button": {"font-weight": "bold",":hover": {"background-color": "#414141"},":focus... etc. (rest unchanged)
+            productSet: { styles: { products: { '@media (min-width: 601px)': { 'margin-left': '-20px' } } } },
+            modalProduct: {
+              contents: { img: false, imgWithCarousel: true, button: false, buttonWithQuantity: true },
+              styles: { button: { 'font-weight': 'bold', ':hover': { 'background-color': '#414141' }, 'background-color': '#262626', ':focus': { 'background-color': '#414141' }, 'border-radius': '33px', 'padding-left': '24px', 'padding-right': '24px' } },
+              text: { button: 'Add to cart' }
+            },
+            cart: { styles: { button: { 'font-weight': 'bold', ':hover': { 'background-color': '#414141' }, ':focus': { 'background-color': '#414141' }, 'background-color': '#262626', 'border-radius': '33px' } }, text: { total: 'Subtotal', button: 'Checkout' }, popup: false },
+            toggle: { styles: { toggle: { 'font-weight': 'bold', 'background-color': '#262626', ':hover': { 'background-color': '#414141' }, ':focus': { 'background-color': '#414141' } } } }
+          }
+        });
+      });
+    }
+  })();
+  /*]]>*/
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var isMobile = window.innerWidth < 768;
+      var totalImages = 12;
+      var pool = [];
+      for (var i = 1; i <= totalImages; i++) {
+        var num = ('00000' + i).slice(-5);
+        pool.push('/flora_andina/thumbnails/Flora_Andina_Tomas_Hein_' + num + '.jpg');
+      }
+      var selected = pool.sort(function() { return 0.5 - Math.random(); }).slice(0, 5);
+
+      var currentDrag = null, offsetX = 0, offsetY = 0;
+      var container = document.querySelector('.left');
+
+      selected.forEach(function(src, idx) {
+        var img = new Image();
+        img.src = src;
+        img.alt = 'Flora Andina ' + (idx + 1);
+        img.className = 'photo';
+        img.setAttribute('draggable', 'false');
+        var w = isMobile ? 150 + Math.random() * 150 : 200 + Math.random() * 200;
+        img.style.width = w + 'px';
+        img.style.left = Math.random() * (container.clientWidth - w) + 'px';
+        img.style.top = Math.random() * (container.clientHeight - w) + 'px';
+        img.style.zIndex = idx;
+        img.onload = function() { container.appendChild(img); };
+        img.addEventListener('pointerdown', function(e) {
+          currentDrag = img;
+          offsetX = e.clientX - img.offsetLeft;
+          offsetY = e.clientY - img.offsetTop;
+          img.style.cursor = 'grabbing';
+          var photos = container.querySelectorAll('.photo');
+          var maxZ = Array.prototype.slice.call(photos).reduce(function(max, p){ return Math.max(max, parseInt(p.style.zIndex) || 0); }, 0);
+          img.style.zIndex = maxZ + 1;
+          e.preventDefault();
+        });
+      });
+
+      document.addEventListener('pointermove', function(e) {
+        if (!currentDrag) return;
+        currentDrag.style.left = (e.clientX - offsetX) + 'px';
+        currentDrag.style.top = (e.clientY - offsetY) + 'px';
+      });
+      document.addEventListener('pointerup', function() {
+        if (currentDrag) { currentDrag.style.cursor = 'grab'; currentDrag = null; }
+      });
+    });
+  </script>
+</body>
+</html>
