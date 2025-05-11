@@ -84,6 +84,35 @@
       line-height: 1.5;
       margin-bottom: 1em;
     }
+    /* Responsive: stack columns and grid thumbnails */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      .left, .right {
+        width: 100%;
+        height: auto;
+      }
+      .buy-button-container {
+        position: static;
+        margin: 20px auto;
+        text-align: center;
+      }
+      .left {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+        padding: 10px;
+        overflow-y: auto;
+      }
+      .photo {
+        position: static;
+        width: 100% !important;
+        transform: none;
+      }
+      html, body { overflow: auto; }
+    }
   </style>
 </head>
 <body>
@@ -95,7 +124,6 @@
         <div id="product-component-1746991516001"></div>
       </div>
     </div>
-
     <div class="right">
       <h1>Flora Andina</h1>
       <div class="artist-statement">
@@ -109,6 +137,7 @@
     </div>
   </div>
 
+  <!-- Shopify Button Script -->
   <script type="text/javascript">
   /*<![CDATA[*/
   (function () {
@@ -145,11 +174,7 @@
               text: { button: 'Buy now' }
             },
             productSet: { styles: { products: { '@media (min-width: 601px)': { 'margin-left': '-20px' } } } },
-            modalProduct: {
-              contents: { img: false, imgWithCarousel: true, button: false, buttonWithQuantity: true },
-              styles: { button: { 'font-weight': 'bold', ':hover': { 'background-color': '#414141' }, 'background-color': '#262626', ':focus': { 'background-color': '#414141' }, 'border-radius': '33px', 'padding-left': '24px', 'padding-right': '24px' } },
-              text: { button: 'Add to cart' }
-            },
+            modalProduct: { contents: { img: false, imgWithCarousel: true, button: false, buttonWithQuantity: true }, styles: { button: { 'font-weight': 'bold', ':hover': { 'background-color': '#414141' }, 'background-color': '#262626', ':focus': { 'background-color': '#414141' }, 'border-radius': '33px', 'padding-left': '24px', 'padding-right': '24px' } }, text: { button: 'Add to cart' } },
             cart: { styles: { button: { 'font-weight': 'bold', ':hover': { 'background-color': '#414141' }, ':focus': { 'background-color': '#414141' }, 'background-color': '#262626', 'border-radius': '33px' } }, text: { total: 'Subtotal', button: 'Checkout' }, popup: false },
             toggle: { styles: { toggle: { 'font-weight': 'bold', 'background-color': '#262626', ':hover': { 'background-color': '#414141' }, ':focus': { 'background-color': '#414141' } } } }
           }
@@ -203,9 +228,7 @@
         currentDrag.style.left = (e.clientX - offsetX) + 'px';
         currentDrag.style.top = (e.clientY - offsetY) + 'px';
       });
-      document.addEventListener('pointerup', function() {
-        if (currentDrag) { currentDrag.style.cursor = 'grab'; currentDrag = null; }
-      });
+      document.addEventListener('pointerup', function() { if (currentDrag) { currentDrag.style.cursor = 'grab'; currentDrag = null; } });
     });
   </script>
 </body>
